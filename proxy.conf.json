@@ -1,0 +1,6 @@
+{
+  "/hcare-chat": {
+    "target": "tabeldata.ip-dynamic.com",
+    "secure": false
+  }
+}

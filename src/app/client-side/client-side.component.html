@@ -1,0 +1,32 @@
+<h3>Kirim Pesan</h3>
+<div>
+  <form [formGroup]="formGroup" (submit)="sendMessage($event)">
+    <div>
+      <label for="fromId">From</label>
+      <select id="fromId" name="fromId" formControlName="fromId" (change)="selectedChangeFrom($event)">
+        <option></option>
+        <option *ngFor="let user of this.listUsers" [value]="user.id">{{user.displayName}}</option>
+      </select>
+    </div>
+    <div>
+      <label for="toId">To</label>
+      <input id="toId" type="text" name="toId" readonly formControlName="toId">
+    </div>
+    <div>
+      <label for="message">Message</label>
+      <textarea formControlName="message" id="message" name="message" id="" cols="30" rows="10"></textarea>
+    </div>
+    <div>
+      <button type="submit" [disabled]="formGroup.invalid">Kirim</button>
+      <button type="reset">Batal</button>
+    </div>
+  </form>
+</div>
+
+<h3>History pesan</h3>
+<div>
+  <ul>
+    <li *ngFor="let message of historyMessage">{{message.dateSent | date:'dd/MMM/yyyy hh:mm:ss'}} : {{message.message}} from {{message.fromId}}</li>
+  </ul>
+</div>
+

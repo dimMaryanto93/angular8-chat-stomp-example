@@ -1,0 +1,11 @@
+<ng-chat #ngChatInstance
+         [adapter]="adapter"
+         [userId]="userService.admin.id"
+         [historyEnabled]="true"
+         [historyPageSize]="4"
+         [hideFriendsList]="false"
+         (onParticipantClicked)="onEventTriggered('ParticipantClicked triggered')"
+         (onParticipantChatOpened)="onMessageOpened($event)"
+         (onParticipantChatClosed)="onEventTriggered('ParticipantChatClosed triggered')"
+         (onMessagesSeen)="onEventTriggered('MessageSeen triggered')"
+         [browserNotificationsEnabled]="false"></ng-chat>
