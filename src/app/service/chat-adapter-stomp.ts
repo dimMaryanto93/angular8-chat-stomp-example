@@ -22,10 +22,18 @@ export class ChatAdapterStomp extends PagedHistoryChatAdapter {
     {
       participantType: ChatParticipantType.User,
       id: 'primajatnika271995@gmail.com',
-      displayName: 'Prima',
+      displayName: 'primajatnika271995@gmail.com',
       avatar: 'https://66.media.tumblr.com/avatar_9dd9bb497b75_128.pnj',
       status: ChatParticipantStatus.Online
-    }];
+    },
+    {
+      participantType: ChatParticipantType.User,
+      id: 'abdul@gmail.com',
+      displayName: 'abdul@gmail.com',
+      avatar: 'https://66.media.tumblr.com/avatar_9dd9bb497b75_128.pnj',
+      status: ChatParticipantStatus.Online
+    }
+  ];
 
   listFriends(): Observable<ParticipantResponse[]> {
     return of(this.mockedParticipants.map(user => {
@@ -54,9 +62,8 @@ export class ChatAdapterStomp extends PagedHistoryChatAdapter {
 
     this.chatService.subscribeByUser(admin.id).subscribe(response => {
       const jsonObject: Message = JSON.parse(response.body);
-      console.log('watch message', jsonObject);
-      const userRecieved = this.mockedParticipants.find(user => user.id === jsonObject.fromId);
-      this.onMessageReceived(userRecieved, jsonObject);
+      const userReceived = this.mockedParticipants.find(user => user.id === jsonObject.fromId);
+      this.onMessageReceived(userReceived, jsonObject);
     }, error => {
       console.log('error subscribe ', error);
     });
